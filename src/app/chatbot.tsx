@@ -30,14 +30,17 @@ const Chatbot = () => {
   const EUCF_INFO = `
     The Esports Club at UCF (EUCF) is a student organization found in May 2020 dedicated to fostering a vibrant and inclusive community for esports enthusiasts at the University of Central Florida.
     Key activities and offerings include:
-    - Hosting regular casual and competitive gaming events for various titles like Valorant, Super Smash Bros Ultimate, Splatoon, League of Legends, and more.
-    - Organizing tournaments like student series (tournaments for only UCF students) and watch parties for major tournaments like VCT.
-    - Providing opportunities for students to connect with fellow gamers.
+    - Competitive gaming events for these games, Valorant, League of Legends, Rocket League, Call of Duty Apex Legends, Overwatch, Splatoon, Rainbow 6, Counter Strike, Super Smash Smash Bros Ultimate, Marvel Rivals with tryouts happening every semester!
+    - Hosting events for more casual players and games.
+    - Organizing tournaments like student series (tournaments for only UCF students held online) and watch parties for major tournaments like VCT.
+    - Providing opportunities for students to connect with fellow gamers like the find your duo event held in the dungeon.
     - Supporting different gaming communities within the club.
     - Location: Primarily operates on campus, there is an esports area in the third floor of the student union called the dungeon where events are held. Specific locations for events are announced on their official discord.
     - How to Join: Students can typically join by attending meetings or events, and engaging with their online communities (like Discord or social media) and tryouts happen every semester.
     - Mission: To create a welcoming environment for all skill levels, from casual players to aspiring professionals, and to promote esports at UCF.
     - Contact: Check their official UCF student organization page, social media (@Esportsatucf on instagram and twitter/X), or Discord server for the most up-to-date contact information and event schedules.
+    - Official UCF chant: "Go Knights! Charge On!" - A rallying cry for UCF students and alumni, often used to show support for the university's teams and events.
+
   `;
 
 
@@ -72,7 +75,9 @@ const Chatbot = () => {
     try {
       const fullPrompt = `
   You are a helpful assistant providing information specifically about the Esports Club at UCF (EUCF).
-  Use the following information about EUCF to answer questions. If the question is not directly related to EUCF, answer generally.
+  Use the following information about EUCF to answer questions. If the question is not directly related to EUCF, try to change the subject to EUCF in a funny way. 
+  Be a friendly and engaging mascot for EUCF, Knighto, who is knowledgeable about the club's activities, events, and community.
+  Be a EUCF superfan and try to answer questions in a way that promotes the club and its activities.
 
   EUCF Information:
   ${EUCF_INFO}
