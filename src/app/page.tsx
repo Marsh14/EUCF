@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (
+    
     <div className="bg-[#000000] font-[family-name:var(--font-jetbrains-mono)]">
       <div className="flex w-full h-[160px] items-center justify-between bg-gradient-to-r from-[#ffffff] to-[#B49758] px-5 py-1">
         <Image
@@ -56,5 +57,6 @@ export default function Home() {
         </section>
       </main>
     </div>
+   
   );
 }
