@@ -2,13 +2,14 @@
 "use client"; // <--- This line is correctly placed at the very top
 
 import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 
 // Main Chatbot component for your Next.js application
 const Chatbot = () => {
   // State to control the visibility of the chat window
   const [showChat, setShowChat] = useState(false);
   // State to store the chat history (messages from user and AI)
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState([{ role: 'model', text: 'Huzzah! My name is Knighto, the mascot of Esports at UCF! How can I help today.' }]);
   // State to store the current message being typed by the user
   const [currentMessage, setCurrentMessage] = useState('');
   // State to manage the loading status during API calls for regular chat
@@ -25,6 +26,19 @@ const Chatbot = () => {
   // TEMPORARY: Log the API key to the console to verify it's loaded.
   // *** REMOVE THIS LINE BEFORE DEPLOYING TO PRODUCTION ***
   console.log('Loaded Gemini API Key:', GEMINI_API_KEY ? '******' + GEMINI_API_KEY.slice(-4) : 'NOT LOADED');
+
+  const EUCF_INFO = `
+    The Esports Club at UCF (EUCF) is a student organization dedicated to fostering a vibrant and inclusive community for esports enthusiasts at the University of Central Florida.
+    Key activities and offerings include:
+    - Hosting regular casual and competitive gaming events for various titles like Valorant, Super Smash Bros Ultimate, Splatoon, League of Legends, and more.
+    - Organizing tournaments like student series (tournaments for only UCF students) and watch parties for major tournaments like VCT.
+    - Providing opportunities for students to connect with fellow gamers.
+    - Supporting different gaming communities within the club.
+    - Location: Primarily operates on campus, there is an esports area in the third floor of the student union called the dungeon where events are held. Specific locations for events are announced on their official discord.
+    - How to Join: Students can typically join by attending meetings or events, and engaging with their online communities (like Discord or social media) and tryouts happen every semester.
+    - Mission: To create a welcoming environment for all skill levels, from casual players to aspiring professionals, and to promote esports at UCF.
+    - Contact: Check their official UCF student organization page, social media (@Esportsatucf on instagram and twitter/X), or Discord server for the most up-to-date contact information and event schedules.
+  `;
 
 
   // Effect to scroll to the bottom of the chat history whenever messages change
@@ -56,19 +70,28 @@ const Chatbot = () => {
     setIsLoading(true); // Set loading state to true for regular chat
 
     try {
+      const fullPrompt = `
+  You are a helpful assistant providing information specifically about the Esports Club at UCF (EUCF).
+  Use the following information about EUCF to answer questions. If the question is not directly related to EUCF, answer generally.
+
+  EUCF Information:
+  ${EUCF_INFO}
+
+  User's question: ${currentMessage}
+`;
       // Prepare the payload for the Gemini API call
       // The chat history is sent as 'contents' to maintain conversation context
       const payload = {
-        contents: [...chatHistory, userMessage].map(msg => ({
-          role: msg.role,
-          parts: [{ text: msg.text }]
-        })),
+        // Here, we send only the current user's prompt enriched with EUCF info.
+        // For conversational context with EUCF info on *every* turn, you'd need a more
+        // sophisticated context management, possibly by including the fullPrompt
+        // in a system message for each turn, or by summarizing past EUCF info.
+        contents: [{ role: 'user', parts: [{ text: fullPrompt }] }],
         generationConfig: {
-            // You can adjust temperature for creativity (0.0 - 1.0)
             temperature: 0.7,
-            // maxOutputTokens: 200, // Optional: Limit response length
         }
       };
+
 
       // Use the API key from the environment variable
       const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
@@ -190,8 +213,8 @@ const Chatbot = () => {
       {/* Floating Action Button (FAB) */}
       <button
         onClick={() => setShowChat(!showChat)}
-        className="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-blue-600 text-white shadow-lg
-                   hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-in-out
+        className="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-[#B49758] text-white shadow-lg
+                   hover:bg-[#B49758] focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-in-out
                    transform hover:scale-110"
         aria-label={showChat ? "Close chatbot" : "Open chatbot"}
       >
@@ -202,10 +225,15 @@ const Chatbot = () => {
           </svg>
         ) : (
           // Chat Icon (Speech bubble)
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        )}
+          <Image
+    src="/Knighto.png" 
+    alt="Chat Icon"
+    width={28}
+    height={28}
+    className="h-7 w-7"
+    priority
+    />
+)}
       </button>
 
       {/* Chat Window - Conditionally rendered with animation */}
@@ -213,21 +241,21 @@ const Chatbot = () => {
         <div
           className={`
             fixed bottom-24 right-6 z-40
-            bg-gray-800 rounded-3xl shadow-2xl overflow-hidden
+            bg-[#FFFFFF] rounded-3xl shadow-2xl overflow-hidden
             w-full max-w-sm h-[calc(100vh-10rem)] sm:h-[40rem] flex flex-col
             transform transition-all duration-300 ease-in-out
             ${showChat ? 'scale-100 opacity-100' : 'scale-90 opacity-0'}
           `}
         >
           {/* Chat Header */}
-          <div className="bg-gray-700 p-4 flex items-center justify-between rounded-t-3xl border-b border-gray-600">
+          <div className="bg-[#000000] p-4 flex items-center justify-between rounded-t-3xl border-b border-gray-600">
             <h1 className="text-xl font-bold text-white tracking-wide">Knighto Chat!</h1>
             {/* New Summarize Button */}
             <button
               onClick={summarizeChat}
               disabled={isLoading || isSummarizing || chatHistory.length === 0}
-              className="ml-4 px-3 py-1 bg-purple-600 text-white text-sm rounded-full
-                         hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500
+              className="ml-4 px-3 py-1 bg-[#000000] text-white text-sm rounded-full
+                         hover:bg-white-700 focus:outline-none focus:ring-2 focus:ring-purple-500
                          disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-1"
             >
               {isSummarizing ? (
@@ -237,7 +265,7 @@ const Chatbot = () => {
                 </svg>
               ) : (
                 <>
-                  ✨ Summarize
+                  Summarize
                 </>
               )}
             </button>
@@ -254,7 +282,7 @@ const Chatbot = () => {
           <div className="flex-1 p-6 overflow-y-auto custom-scrollbar">
             {chatHistory.length === 0 && (
               <div className="text-center text-gray-400 mt-10">
-                <p className="text-lg">Start a conversation with Gemini AI!</p>
+                <p className="text-lg">Start a conversation with the EUCF mascot Knighto!</p>
                 <p className="text-sm mt-2">Type your message below and press Enter.</p>
               </div>
             )}
@@ -266,8 +294,8 @@ const Chatbot = () => {
                 <div
                   className={`max-w-[75%] px-4 py-2 rounded-2xl shadow-md ${
                     message.role === 'user'
-                      ? 'bg-blue-600 text-white rounded-br-none'
-                      : 'bg-gray-700 text-gray-100 rounded-bl-none'
+                      ? 'bg-[#000000] text-white rounded-br-none'
+                      : 'bg-[#B49758] text-gray-100 rounded-bl-none'
                   }`}
                 >
                   <p className="text-sm sm:text-base">{message.text}</p>
@@ -285,7 +313,7 @@ const Chatbot = () => {
           </div>
 
           {/* Message Input Area */}
-          <div className="p-4 bg-gray-700 border-t border-gray-600 flex items-center gap-3 rounded-b-3xl">
+          <div className="p-4 bg-[#000000] border-t border-gray-600 flex items-center gap-3 rounded-b-3xl">
             <input
               type="text"
               // ADDED suppressHydrationWarning HERE to prevent errors from browser extensions
@@ -302,7 +330,7 @@ const Chatbot = () => {
               disabled={isLoading || isSummarizing || !currentMessage.trim()} // Disable if either operation is loading
               // Corrected multi-line string for className using template literals (backticks)
               className={`
-                bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all duration-200
+                bg-[#B49758] hover:bg-[#B49758] text-white p-3 rounded-full shadow-lg transition-all duration-200
                 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center
                 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-700
               `}
