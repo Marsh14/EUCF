@@ -38,20 +38,20 @@ export default function Home() {
             <a href="#contact">Contact Info</a>
           </Button>
       </div>
-        <main className="space-y-16 p-8">
-        <section id="about-us" className="h-screen scroll-mt-[210px] pt-4">
+        <main className="space-y-32 p-8 pl-20 pr-20">
+        <section id="about-us" className="h-screen scroll-mt-[50px] pt-4">
           <h2 className="text-3xl font-bold text-[#ffffff]">About Us</h2>
         </section>
-        <section id="teams" className="h-screen scroll-mt-[210px] pt-4">
+        <section id="teams" className="h-screen scroll-mt-[50px] pt-4">
           <h2 className="text-3xl font-bold text-[#ffffff]">Teams</h2>
         </section>
-        <section id="staff" className="h-screen scroll-mt-[210px] pt-4">
+        <section id="staff" className="h-screen scroll-mt-[50px] pt-4">
           <h2 className="text-3xl font-bold text-[#ffffff]">Staff/Officers</h2>
         </section>
-        <section id="dungeon" className="h-screen scroll-mt-[210px] pt-4">
+        <section id="dungeon" className="h-screen scroll-mt-[50px] pt-4">
           <h2 className="text-3xl font-bold text-[#ffffff]">The Dungeon</h2>
         </section>
-        <section id="contact" className="h-screen scroll-mt-[210px] pt-4">
+        <section id="contact" className="h-screen scroll-mt-[50px] pt-4">
           <h2 className="text-3xl font-bold text-[#ffffff]">Contact Info</h2>
         </section>
       </main>
