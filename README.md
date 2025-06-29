@@ -1,0 +1,1 @@
+The purpose of this repository is to create a website mock-up for Esports at UCF, displaying and explaining many aspects of the club. An interactable AI chat bot using Google Gemini AI is developed to help relay information to users.
