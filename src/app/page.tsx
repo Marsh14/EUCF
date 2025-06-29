@@ -41,22 +41,37 @@ export default function Home() {
       </div>
         <main className="space-y-32 p-8 pl-20 pr-20">
         <section id="about-us" className="h-screen scroll-mt-[50px] pt-4">
-          <h2 className="text-3xl font-bold text-[#ffffff]">About Us</h2>
+          <h2 className="text-6xl font-bold text-[#ffffff]">About Us</h2>
           <br></br>
-          <h3 className="text-3l font-bold text-[#ffffff]">Esports at UCF (EUCF) is a club at the University of Central Florida that is dedicated to UCF students that are interested in casual and competitive gaming. Founded in May 2020, EUCF has competitive teams that play in tournaments versus different schools and also we have events on campus for anyone to enjoy!</h3>
+          <h3 className="text-3xl font-bold text-[#ffffff]">Esports at UCF (EUCF) is a club at the University of Central Florida that is dedicated to UCF students that are interested in casual and competitive gaming. Founded in May 2020, EUCF has competitive teams that play in tournaments versus different schools and also we have events on campus for anyone to enjoy!
+            <Image
+              src="/eucf-about-us.png"
+              alt="EUCF About Us"
+              width={1105}
+              height={369}
+            />
+          </h3>
         </section>
 
         <section id="teams" className="h-screen scroll-mt-[50px] pt-4">
-          <h2 className="text-3xl font-bold text-[#ffffff]">Teams</h2>
+          <h2 className="text-6xl font-bold text-[#ffffff]">Teams</h2>
           <br></br>
-          <h3 className="text-3l font-bold text-[#ffffff]">Esports at UCF has teams for Valorant, League of Legends, Rocket League, Call of Duty Apex Legends, Overwatch, Splatoon, Rainbow 6, Counter Strike, Super Smash Smash Bros Ultimate, Marvel Rivals with tryouts happening every semester!</h3>
+          <h3 className="text-3xl font-bold text-[#ffffff]">Esports at UCF has teams for Valorant, League of Legends, Rocket League, Call of Duty Apex Legends, Overwatch, Splatoon, Rainbow 6, Counter Strike, Super Smash Smash Bros Ultimate, Marvel Rivals with tryouts happening every semester!
+          <Image
+            src="/eucf-teams.png"
+            alt="EUCF Teams"
+            width={490}
+            height={622}
+          />
+
+          </h3>
         </section>
 
         <section id="staff" className="h-screen scroll-mt-[50px] pt-4">
-          <h2 className="text-3xl font-bold text-[#ffffff]">Staff/Officers</h2>
+          <h2 className="text-6xl font-bold text-[#ffffff]">Staff/Officers</h2>
           <br></br>
-          <h3 className="text-3l font-bold text-[#ffffff]">Not only do we have Officers and Junior officers we also have many other teams that make EUCF possible!</h3> 
-          <ul className="text-3l font-bold text-[#ffffff]">
+          <h3 className="text-3xl font-bold text-[#ffffff]">Not only do we have Officers and Junior officers we also have many other teams that make EUCF possible!</h3> 
+          <ul className="text-3xl font-bold text-[#ffffff]">
             <li>
               <h3>&#8226; Managerial Staff: Every team has a manager that makes sure the team is registered and ready to play the matches they have.</h3>
             </li>
@@ -69,19 +84,34 @@ export default function Home() {
             <li>
               <h3>&#8226; Content staff: The content staff helps run the streams for our game days and also help make videos and content for the EUCF social media accounts.</h3>
             </li>
+            <Image
+              src="/eucf-staff.jpeg"
+              alt="EUCF Staff"
+              width={600}
+              height={400}
+            />
           </ul>
 
         </section>
         <section id="dungeon" className="h-screen scroll-mt-[50px] pt-4">
-          <h2 className="text-3xl font-bold text-[#ffffff]">The Dungeon</h2>
+          <h2 className="text-6xl font-bold text-[#ffffff]">The Dungeon
+          </h2>
           <br></br>
-          <h3 className="text-3l font-bold text-[#ffffff]">The dungeon is located on the third floor of the student union and is open to all members of EUCF anytime and it is where most EUCF events are held. It has high quality gaming PCs, headphones, and other equipment for the players to use for practice or on game days.</h3>
+          <h3 className="flext text-3xl items-center justify-right font-bold text-[#ffffff] pt-2">The dungeon is located on the third floor of the student union and is open to all members of EUCF anytime and it is where most EUCF events are held. It has high quality gaming PCs, headphones, and other equipment for the players to use for practice or on game days.
+          <Image
+              src = "/the-dungeon.jpg"
+              alt = "The Dungeon"
+              width={1000}
+              height={462}
+            />
+          </h3>
+          
         </section>
 
         <section id="contact" className="h-screen scroll-mt-[50px] pt-4">
-          <h2 className="text-3xl font-bold text-[#ffffff]">Contact Info</h2>
+          <h2 className="text-6xl font-bold text-[#ffffff]">Contact Info</h2>
           <a 
-            className="font-bold text-[#ffffff]"
+            className="font-bold text-3xl text-[#ffffff]"
             href="https://x.com/EsportsatUCF"
             target="_blank"
             rel="noopenner noreferrer"
@@ -89,21 +119,29 @@ export default function Home() {
             <h3>EUCF X</h3>
           </a>
           <a 
-            className="font-bold text-[#ffffff]"
-            href="https://www.instagram.com/p/DAG-fRERPdw/"
+            className="font-bold text-3xl text-[#ffffff]"
+            href="https://www.instagram.com/esportsatucf/"
             target="_blank"
             rel="noopenner noreferrer"
           >
             <h3>EUCF Instagram</h3>
           </a>
           <a 
-            className="font-bold text-[#ffffff]"
+            className="font-bold text-3xl text-[#ffffff]"
             href="https://www.linkedin.com/company/esportsatucf/"
             target="_blank"
             rel="noopenner noreferrer"
           >
             <h3>EUCF LinkedIn</h3>
           </a>
+
+          <Image
+            src="/logocombo.png"
+            alt="EUCF Socials Logos"
+            width={528}
+            height={615}
+          />
+
         </section>
       </main>
     </div>
