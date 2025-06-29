@@ -49,7 +49,42 @@ export default function Home() {
         <section id="teams" className="h-screen scroll-mt-[50px] pt-4">
           <h2 className="text-3xl font-bold text-[#ffffff]">Teams</h2>
           <br></br>
-          <h3 className="text-3l font-bold text-[#ffffff]">Esports at UCF has teams for Valorant, League of Legends, Rocket League, Call of Duty Apex Legends, Overwatch, Splatoon, Rainbow 6, Counter Strike, Super Smash Smash Bros Ultimate, Marvel Rivals with tryouts happening every semester!</h3>
+          <h3 className="text-3l font-bold text-[#ffffff]">Esports at UCF supports a variety of competitive games with tryouts happening every semester!</h3>
+          <ul className="text-3l font-bold text-[#ffffff]">
+            <li>
+              <h3>&#8226; Valorant</h3>
+            </li>
+            <li>
+              <h3>&#8226; League of Legends</h3>
+            </li>
+            <li>
+              <h3>&#8226; Rocket League</h3>
+            </li>
+            <li>
+              <h3>&#8226; Call of Duty</h3>
+            </li>
+            <li>
+              <h3>&#8226; Apex Legends</h3>
+            </li>
+            <li>
+              <h3>&#8226; Overwatch</h3>
+            </li>
+            <li>
+              <h3>&#8226; Splatoon</h3>
+            </li>
+            <li>
+              <h3>&#8226; Rainbow 6</h3>
+            </li>
+            <li>
+              <h3>&#8226; Counter Strike</h3>
+            </li>
+            <li>
+              <h3>&#8226; Super Smash Smash Bros Ultimate</h3>
+            </li>
+            <li>
+              <h3>&#8226; Marvel Rivals</h3>
+            </li>
+          </ul>
         </section>
 
         <section id="staff" className="h-screen scroll-mt-[50px] pt-4">
